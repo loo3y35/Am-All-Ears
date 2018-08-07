@@ -16,7 +16,7 @@ Currently, its’s using Gmail SMTP server. But of course you can change the ser
 I’ve used two configurations in crontab and rc.local
 ## Crontab
 With he following entry, the email is sent every four hours.
-'0 0,4,8,12,16,20 * * *	python /home/user/.custom/AmAllEars.py’
+`0 0,4,8,12,16,20 * * *	python /home/user/.custom/AmAllEars.py`
 ## rc.local
 I’ve added the following entry
-'python /home/user/.custom/AmAllEars.py'
+`python /home/user/.custom/AmAllEars.py`
