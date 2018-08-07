@@ -1,18 +1,22 @@
-# Am-All-Ears
-This python scripts acquires the public IP from https://api.ipify.org and sends it over email.
+# Introduction:
+Am-All-Ears script is designed to share the public IP for the machine it is running on. Then, send this public IP over email. Currently, it acquires the public IP from https://api.ipify.org and it uses GMail. The main goal was to not rely on DNS based services (e.g. DynDNS) to maintain reachability to your devices.
 
-It's intended to reomve the requireiment of using services such as DynDNS.
+# Description:
+To be able to use it, you will need to login with en email account you own. The script will generate three four encrypted files the first time you use it to store:
+* Encryption and decryption password (i.e. aae_data_key).
+* Sender email address (i.e. aae_data_sender).
+* Sender password (i.e. aae_data_passwd).	
+* Recipient email address (i.e. aae_data_recep).
 
-You will only need to register an email address to login and send it.
+If any of these files are missing, all files are regenerated (and well, overwritten).
+The firs time you run it you will be promoted to enter information mentioned beforehand.
+Currently, its’s using Gmail SMTP server. But of course you can change the server domain name and port number.
 
-I've used it with GMail but I needed to Enable Access for Less Secure Apps.
-
-To keep myself updated, I schedueled sending running the script every 4 hours and whenever my homeserver boots.
-
-user@vm:~$ cat /etc/rc.local | grep AmAllEars
-
-python /home/user/.custom/AmAllEars.py
-
-user@vm:~$ crontab -l | grep AmAllEars
-
-0 0,4,8,12,16,20 * * *	python /home/user/.custom/AmAllEars.py
+# How to Keep Your Self Updated:
+I’ve used two configurations in crontab and rc.local
+## Crontab:
+With he following entry, the email is sent every four hours.
+    0 0,4,8,12,16,20 * * *	python /home/user/.custom/AmAllEars.py
+## rc.local:
+I’ve added the following entry
+    python /home/user/.custom/AmAllEars.py
